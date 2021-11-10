@@ -1,0 +1,33 @@
+﻿@model Feedback
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container text-center">
+    <h1 class="display-4">Bem Vindo à Doce Sabor</h1>
+    <p>Doces artesanais recheados de amor e carinho.</p>
+</div>
+<div class="container texte-justify">
+    @ViewData["Mensagem"]
+    <form asp-controller="Home" asp-action="Index" method="post">
+        <div class="form-group">
+            <label asp-for="Nome">Nome:</label>
+            <input asp-for="Nome" id="nome" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label asp-for="Nota">Nota de 1 à 5:</label>
+            <select asp-for="Nota" id="nota" class="form-control" required>
+                <option value="5">(5) Ótimo</option>
+                <option value="4">(4) Bom</option>
+                <option value="3">(3) Mais ou menos</option>
+                <option value="2">(2) Ruim</option>
+                <option value="1">(1) Péssimo</option>
+            </select>
+        </div>
+        <div class="for-group">
+            <label asp-for="Opiniao">Deixe sua opinião:</label>
+            <textarea asp-for="Opiniao" class="form-control" id="opiniao" required></textarea>
+        </div>
+        <input type="submit" value="Enviar" class="btn btn-primary" id="btnFeedback">
+    </form>
+</div>

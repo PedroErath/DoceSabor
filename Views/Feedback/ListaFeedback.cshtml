@@ -1,0 +1,50 @@
+@model ICollection<Feedback>
+
+@{
+    ViewData["Title"] = "Lista";
+}
+<div>
+    <form asp-controller="Feedback" asp-action="ListaFeedback" method="GET">
+        <fieldset>
+            <legend>Filtros</legend>
+            <p style="float: left; margin-right:10px;">Nome: <input type="text" name="n"></p>
+            <input type="submit" value="Buscar">
+        </fieldset>
+    </form>
+</div>
+
+<div class="table-responsive">
+    <span id="msg"></span>
+    @if (Model != null)
+    {
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <td>Nome</td>
+                    <td>Nota (1 à 5)</td>
+                    <td>Opinião</td>
+                    @* @if (Context.Session.GetString("LoginAdm") != null)
+                        {
+                                <td>Ação</td>
+                        } *@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Feedback fb in Model)
+                {
+                    <tr>
+                        <td>@fb.Nome</td>
+                        <td>@fb.Nota</td>
+                        <td>@fb.Opiniao</td>
+                        @* @if (Context.Session.GetString("LoginAdm") != null)
+                        {
+                            <td>
+                                <a href="/Feedback/Remover?Id=@fb.Id">Remover</a>
+                            </td>
+                        } *@
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

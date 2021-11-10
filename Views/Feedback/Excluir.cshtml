@@ -1,0 +1,16 @@
+@model Feedback
+@{
+    ViewData["Title"]= "Cadastro";
+}
+
+<div class="container text-center">
+    <h1 class="display-4">Exclusão de Feedback</h1>
+    <p>Esta ação excluirá o Feedback de <strong>@Model.Nome</strong> permanentemente.</p>
+    <p>Tem certeza que deseja realizar esta operação?</p>
+</div>
+
+<form asp-action="Excluir" method="post">
+    <input type="hidden" asp-for="Id">
+    <button type="submit" name="decisao" value="s">Sim</button>
+    <button type="submit" name="decisao" value="n">Não</button>
+</form>
